@@ -9,10 +9,15 @@ export default function BasicPagination({ setPage, numberOfPages = 10 }) {
   }
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-      <Pagination
-        count={numberOfPages}
-        onChange={(e) => handlePageChange(e.target.textContent)}
-      />
+      <Stack spacing={2}>
+        <Pagination
+          count={numberOfPages}
+          onChange={(e) => handlePageChange(e.target.textContent)}
+          hidePrevButton
+          hideNextButton
+          size="large"
+        />
+      </Stack>
     </div>
   );
 }

@@ -8,7 +8,6 @@ import {
   Badge,
 } from "@mui/material";
 import { img_300, unavailable } from "../../config/config";
-import ContentModal from "../Modal/ContentModal";
 export default function SingleContent({
   id,
   title,

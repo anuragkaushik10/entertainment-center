@@ -1,27 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SingleContent from "../../components/SingleContent/SingleContent";
+import Spinner from "../../components/Spinner";
 import CustomPagination from "../../Pagination/Pagination";
 import "./Trending.css";
 
 export default function Trending() {
   const [content, setContent] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [loading, isLoading] = React.useState(true);
+
   async function fetchData() {
-    setLoading(true);
+    isLoading(true);
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/trending/all/day?api_key=bbe796e21f6cbd517395b33b17cd7e2f&page=${page}`
     );
     setContent(data.results);
-    setLoading(false);
+    isLoading(false);
   }
 
   useEffect(() => {
     fetchData();
   }, [page]);
   if (loading) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
   return (
     <div>

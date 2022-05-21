@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Chip } from "@mui/material";
+import Spinner from "../Spinner";
 export default function Genres({
   type,
   genres,
@@ -27,13 +28,13 @@ export default function Genres({
     setGenres([...genre, genre]);
     setPage(1);
   };
-  console.log(genres.length);
   React.useEffect(() => {
     fetchGenres();
     return () => {
       setGenres({});
     };
   }, []);
+
   return (
     <div style={{ padding: "6px 0" }}>
       {selectedGenres.length > 0 &&
